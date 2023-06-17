@@ -163,3 +163,5 @@ cython_debug/
 ResGCN/sem_seg_dense/result
 ResGCN/sem_seg_dense/data
 ResGCN/sem_seg_dense/sem_seg_dense-res-edge-28-64-ckpt_best_model.pth
+**/.DS_Store
+PointNet/log

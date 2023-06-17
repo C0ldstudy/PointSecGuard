@@ -56,9 +56,6 @@ class DenseDeepGCN(torch.nn.Module):
                     m.bias.requires_grad = True
 
     def forward(self, inputs):
-        # print(inputs[:, 0:3].shape)
-        # print(self.knn(inputs[:, 0:3]), self.knn(inputs[:, 0:3]).shape)
-        # exit()
         feats = [self.head(inputs, self.knn(inputs[:, 0:3]))]
         temp = self.knn(inputs[:, 0:3])
         for i in range(self.n_blocks-1):
