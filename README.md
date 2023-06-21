@@ -6,6 +6,6 @@ The code of the paper "On Adversarial Robustness of Point Cloud Semantic Segment
 ### Structure
 - ResGCN: Check the [`README.md`](./ResGCN/README.md) in ResGCN folder.
 - PoineNet++: Check the [`README.md`](./PointNet/README.md) in PointNet++ folder.
-
+- RandLA-Net: Check the [`README.md`](./RandLA-Net/README.md) in RandLA-Net folder.
 ### Thank
 Thanks for the authors of the code we mentioned in the paper to share their codes and models.

@@ -126,7 +126,7 @@ def main(args):
         # print(scene_id)
         batch_idx = scene_id.index('Area_5_office_33')
 
-        if True:
+        for batch_idx in range(num_batches):
             print("visualize [%d/%d] %s ..." % (batch_idx+1, num_batches, scene_id[batch_idx]))
             total_seen_class_tmp = [0 for _ in range(NUM_CLASSES)]
             total_correct_class_tmp = [0 for _ in range(NUM_CLASSES)]

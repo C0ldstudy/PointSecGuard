@@ -115,7 +115,6 @@ def main(args):
         adv_total_iou_deno_class = [0 for _ in range(NUM_CLASSES)]
 
         log_string('---- EVALUATION WHOLE SCENE----')
-        # num_batches = 1
         for batch_idx in range(num_batches):
             print("visualize [%d/%d] %s ..." % (batch_idx+1, num_batches, scene_id[batch_idx]))
             total_seen_class_tmp = [0 for _ in range(NUM_CLASSES)]
