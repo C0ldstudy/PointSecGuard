@@ -16,22 +16,22 @@ class NB_attack(Attack):
         self.iters=iters
 
     def forward(self, images, labels):
+        # import pdb;pdb.set_trace()
         color = images[:, 3:6].clone().detach().to(self.device)
         ori_color = color.clone().detach().to(self.device)
         ori_image = images.clone().detach().to(self.device)
 
         adv_images = images.clone().detach().to(self.device)
-        labels = torch.tensor(labels[0], dtype=torch.int64).to(self.device)
-        loss = nn.CrossEntropyLoss()
+        labels = torch.tensor(labels, dtype=torch.int64).to(self.device)
+        loss = nn.CrossEntropyLoss(reduction='sum')
 
         for i in range(self.iters):
             color.requires_grad = True
             adv_images[:, 3:6] = color
             outputs,_ = self.model(adv_images)
-            outputs = outputs[0]#.max(1)[1].float()
 
             self.model.zero_grad()
-            cost = loss(outputs, labels).to(self.device)
+            cost = (loss(outputs.reshape(-1, outputs.size(2)), labels.view(-1))/outputs.size(1)).to(self.device)
             cost.backward(retain_graph=True)
 
             adv_images[:, 3:6] = adv_images[:, 3:6] + self.alpha*color.grad.sign()
